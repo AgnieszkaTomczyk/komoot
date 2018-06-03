@@ -1,0 +1,36 @@
+---
+title: "Report on Komoot pioneers and experts in Poland"
+output:
+  pdf_document: default
+  html_document: default
+geometry: margin=0.5in
+---
+
+```{r echo = FALSE, warning = FALSE, message=FALSE, results="hide"}
+library(knitr)
+library(kableExtra)
+source("./scraping.R")
+```
+
+My report is based on data available on page: https://www.komoot.com/pioneers/club
+
+I have decided to prepare a short report on Komoot pioneers and experts in Poland.
+
+I used R language and web-scraping techniques to exact information from Kommot page about polish pioneers and experts in an automated way.
+
+In the table below, we have data about usernames and number how many pioneer and expert badges do they have. 
+
+```{r echo = FALSE, warning = FALSE, message=FALSE}
+kable(pioneers_experts) %>% kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
+```
+
+
+Additionaly, as a small insight into our data, I will select 3 users with the highest number of expert badges. 
+```{r echo = FALSE, warning = FALSE, message=FALSE}
+pioneers_experts %>%
+  arrange(desc(expert)) %>%
+  .[1:3,]-> best_experts
+kable(best_experts) %>% kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
+```
+
+Undoubtedly, it's only a tip of the iceberg of facts that we can get from data...
